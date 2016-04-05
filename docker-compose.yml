@@ -3,7 +3,7 @@ version: '2'
 services:
  
     main:
-        image: loomchild/flarum
+        image: puffinrocks/flarum
         depends_on:
             - db
         ports: 
@@ -19,7 +19,7 @@ services:
             - default
 
     db:
-        image: loomchild/mariadb
+        image: puffinrocks/mariadb
         ports: 
             - 3306
         environment:
