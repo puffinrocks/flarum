@@ -32,7 +32,7 @@ VOLUME /var/www/html
 
 RUN mkdir -p /usr/src/flarum \
     && cd /usr/src/flarum \
-    && composer create-project flarum/flarum . --stability=beta
+    && composer create-project flarum/flarum . v0.1.0-beta.5 --stability=beta
 
 COPY config.* /usr/src/flarum/
 
