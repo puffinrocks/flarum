@@ -1,0 +1,9 @@
+databaseConfiguration: 
+    driver: mysql
+    host: db
+    database: flarum
+    username: flarum
+    password: flarum
+
+baseUrl: $DOMAIN
+

@@ -32,11 +32,11 @@ VOLUME /var/www/html
 
 RUN mkdir -p /usr/src/flarum \
     && cd /usr/src/flarum \
-    && curl -sSL https://github.com/flarum/flarum/archive/v0.1.0-beta.4.tar.gz | tar --strip-components=1 -xz \
-    && sed -i 's|"\*"|"0.3.0"|g' composer.json \
-    && sed -i 's|"^0.1.0"|">=0.1.0 <=0.1.0-beta.4"|g' composer.json \
-    && composer install
-    # && composer create-project flarum/flarum . v0.1.0-beta.4 --stability=beta
+    && composer create-project flarum/flarum . v0.1.0-beta.5 --stability=beta
+
+RUN cd /usr/src/flarum/vendor/flarum/core \
+    && sed -i 's|InfoCommand::class,||g' src/Console/Server.php \
+    && sed -i "s|\['config' => \$app->make('flarum.config')\]|['config' => \$app->isInstalled() ? \$app->make('flarum.config') : []]|g" src/Console/Server.php
 
 COPY config.* /usr/src/flarum/
 
