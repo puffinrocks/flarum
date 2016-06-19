@@ -38,6 +38,11 @@ RUN cd /usr/src/flarum/vendor/flarum/core \
     && sed -i 's|InfoCommand::class,||g' src/Console/Server.php \
     && sed -i "s|\['config' => \$app->make('flarum.config')\]|['config' => \$app->isInstalled() ? \$app->make('flarum.config') : []]|g" src/Console/Server.php
 
+RUN cd /usr/src/flarum/vendor/flarum/flarum-ext-subscriptions \
+    && curl -sSL https://github.com/flarum/flarum-ext-subscriptions/pull/9.diff > 9.diff \
+    && git apply 9.diff \
+    && cd /usr/src/flarum
+
 COPY config.* /usr/src/flarum/
 
 COPY docker-entrypoint.sh /entrypoint.sh
