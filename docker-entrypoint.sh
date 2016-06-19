@@ -6,6 +6,7 @@ if [ ! -e '/var/www/html/index.php' ]; then
     sleep 20
     
     php flarum install --file config.yml
+    sed -i "s|'debug' => true|'debug' => false|g" /var/www/html/config.php
     sed -i "s|'\$DOMAIN'|'http://' . getenv('VIRTUAL_HOST')|g" /var/www/html/config.php
     chown -R www-data /var/www/html
     
