@@ -19,7 +19,7 @@ services:
             - main_data:/var/www/html
         tmpfs:
             - /tmp
-            #- /run - can't do that due to https://github.com/docker-library/php/issues/250
+            - /run
 
     db:
         image: puffinrocks/mariadb
