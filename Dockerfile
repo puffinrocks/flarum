@@ -1,5 +1,7 @@
 FROM php:5-apache
 
+ENV VERSION 0.1.0-beta.5
+
 RUN apt-get update && apt-get install -y \
         curl \
         git \
@@ -32,7 +34,7 @@ VOLUME /var/www/html
 
 RUN mkdir -p /usr/src/flarum \
     && cd /usr/src/flarum \
-    && composer create-project flarum/flarum . v0.1.0-beta.5 --stability=beta
+    && composer create-project flarum/flarum . v$VERSION --stability=beta
 
 RUN cd /usr/src/flarum/vendor/flarum/core \
     && sed -i 's|InfoCommand::class,||g' src/Console/Server.php \
