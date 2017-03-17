@@ -34,7 +34,7 @@ VOLUME /var/www/html
 
 RUN mkdir -p /usr/src/flarum \
     && cd /usr/src/flarum \
-    && composer create-project flarum/flarum . v$VERSION --stability=beta
+    && composer create-project flarum/flarum . v$VERSION --stability=beta \
     && composer require zendframework/zend-stratigility 1.2.1
 
 RUN cd /usr/src/flarum/vendor/flarum/core \
