@@ -1,12 +1,12 @@
 version: '2'
 
 services:
- 
+
     main:
         image: puffinrocks/flarum:latest
         depends_on:
             - db
-        ports: 
+        ports:
             - 80
         environment:
             - VIRTUAL_HOST
@@ -18,7 +18,7 @@ services:
             - front
             - back
             - default
-        volumes: 
+        volumes:
             - main_data:/var/www/html
         tmpfs:
             - /tmp
@@ -26,14 +26,14 @@ services:
 
     db:
         image: puffinrocks/mariadb
-        ports: 
+        ports:
             - 3306
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: flarum
             MYSQL_USER: flarum
             MYSQL_PASSWORD: flarum
-        volumes: 
+        volumes:
             - db_data:/var/lib/mysql
 
 volumes:

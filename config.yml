@@ -1,4 +1,4 @@
-databaseConfiguration: 
+databaseConfiguration:
     driver: mysql
     host: db
     database: flarum
